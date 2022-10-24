@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{%block body_block%}
+
+<div class="container">
+     <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6 r">
+            <h3 class="mt-5" style="color: blue" >Categories</h3>
+            <form action="" class="mt-5" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-dark form-control">Update</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+{%endblock%}

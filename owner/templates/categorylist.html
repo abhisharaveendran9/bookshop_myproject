@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+
+    <div class="row text-center">
+        <div class="col-4"></div>
+        <div class="col-4 form-control" >
+            <h3 class="mt-5" style="color: blue" ><strong>Categories</strong></h3>
+
+            {%if categories%}
+            <table class="table mt-5 ">
+                <tr>
+                    <th>Category Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {%for category in categories%}
+                <tr>
+                    <td>{{category.category_name}}</td>
+                    <td>{{category.is_active}}</td>
+                    <td>
+                        <a href="{%url 'category-edit' category.id %}" class="btn btn-outline-warning">Edit</a>
+                        <a href="{%url 'remove-category' category.id %}" class="btn btn-outline-danger">Delete</a>
+                    </td>
+
+                </tr>
+                {%endfor%}
+            </table>
+            {%else%}
+            <h2 class="text-danger">no categories</h2>
+            {%endif%}
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+{%endblock%}
