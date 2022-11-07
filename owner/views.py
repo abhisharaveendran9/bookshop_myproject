@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from owner import forms
-from django.views.generic import CreateView,TemplateView,FormView,View,DetailView,UpdateView
-from owner.models import Categories,Books
+from django.views.generic import CreateView,TemplateView,FormView,View,DetailView,UpdateView,ListView
+from owner.models import Categories,Books,Orders
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth import logout
 from owner.forms import CategoryForm, BookForm
 
 # Create your views here.
@@ -64,6 +65,7 @@ class CategoryEditView(UpdateView):
     def form_valid(self, form):
         return super().form_valid(form)
 
+
 def delete_category(request, *args, **kwargs):
     id=kwargs.get("id")
     Categories.objects.get(id=id).delete()
@@ -104,3 +106,18 @@ def delete_book(request, *args, **kwargs):
     Books.objects.get(id=id).delete()
     # messages.success(request,"deleted")
     return redirect("booklist")
+
+
+class SignOutView(View):
+    def get(self,request,*args,**kwargs):
+        logout(request)
+        return redirect("login")
+
+
+class OrdersListView(ListView):
+    model=Orders
+    context_object_name="orders"
+    template_name: str="admin-orderlist.html"
+
+    def get_queryset(self):
+        return Orders.objects.filter(status="order-placed")

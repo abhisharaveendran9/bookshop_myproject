@@ -1,0 +1,35 @@
+{%extends 'basepage.html'%}
+{%block body_block%}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+
+            <div class="card" style="width: 40rem;">
+                <!-- Product image-->
+                <img class="card-img-top" src="{{book.image.url}}" alt="..." />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{book.book_name}}</h5><br>
+                        <!-- Product price-->
+                        Price: ${{book.price}}<br><br>
+                        <p>Book Genre: {{book.category}}</p><br>
+                        <p>{{book.description}}</p>
+
+                    </div>
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{%url 'addto-cart' book.id %}">AddtoCart</a></div>
+
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+{%endblock%}

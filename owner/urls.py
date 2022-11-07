@@ -12,6 +12,8 @@ urlpatterns=[
     path("book/list", views.BookListView.as_view(), name="booklist"),
     path("book/remove/<int:id>",views.delete_book,name="remove-book"),
     path("book/details/<int:id>",views.BookDetailView.as_view(),name="book-detail"),
-    path("book/change/<int:id>",views.BookEditView.as_view(),name="book-edit")
+    path("book/change/<int:id>",views.BookEditView.as_view(),name="book-edit"),
+    path("orders/latest", views.OrdersListView.as_view(), name="neworders"),
+    path("signout", views.SignOutView.as_view(), name="signout"),
 
 ]

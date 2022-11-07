@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard</title>
+        <title>Admin Dashboard</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{%static 'css/styles.css'%}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -124,7 +124,7 @@
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Books</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="{%url 'booklist'%}">View</a>
+                                        <a class="small text-white stretched-link" href="{%url 'booklist' %}">View</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Orders</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View</a>
+                                        <a class="small text-white stretched-link" href="{%url 'neworders' %}">View</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

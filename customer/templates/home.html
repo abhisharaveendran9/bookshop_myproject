@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>homepage</title>
+  <title>Book store</title>
 <!--
 Holiday Template
 http://www.templatemo.com/tm-475-holiday
@@ -25,7 +25,8 @@ http://www.templatemo.com/tm-475-holiday
     <![endif]-->
 
   </head>
-  <body class="tm-gray-bg">
+  <body class="tm-white-bg">
+  {%csrf_token%}
   	<!-- Header -->
   	<div class="tm-header">
   		<div class="container">
@@ -39,11 +40,17 @@ http://www.templatemo.com/tm-475-holiday
 		            </div>
 	  				<nav class="tm-nav">
 						<ul>
-							<li><a href="index.html" class="active">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="carts.html">My Cart</a></li>
-<!--							<li><a href="contact.html">Contact</a></li>-->
-							<li><a href="{%url 'login' %}">Logout</a></li>
+							<li><a href="{%url 'home'%}">Home</a></li>
+							<li><a href="{%url 'all-books'%}">View Books</a></li>
+<!--							<li><a href="about.html">About</a></li>-->
+<!--							<li><a href="{%url 'mycart' %}">My Cart</a></li>-->
+							<li><a href="{%url 'mycart' %}" style="font-size:18px" class="fa">&#xf07a;
+								<span class="badge bg-dark text-white ms-1 rounded-pill">
+									{{request.user.carts_set.all.count}}
+								</span>
+							</a></li>
+
+							<li><a href="{%url 'signout' %}">Logout</a></li>
 						</ul>
 					</nav>		
 	  			</div>				
@@ -52,7 +59,7 @@ http://www.templatemo.com/tm-475-holiday
   	</div>
 	
 	<!-- Banner -->
-	<section class="tm-grey-bg tm-banner">
+	<section class="tm-white-bg tm-banner">
 		<!-- Flexslider -->
 		<div class="flexslider flexslider-banner">
 		  <ul class="slides">
@@ -80,7 +87,7 @@ http://www.templatemo.com/tm-475-holiday
 
 
 				</div>
-		      <img src="{%static 'img/book3.jpg'%}" alt="Image" />
+		      <img src="{%static 'img/pic1.jpeg'%}" alt="Image" />
 		    </li>
 		  </ul>
 		</div>	
@@ -101,14 +108,14 @@ http://www.templatemo.com/tm-475-holiday
 				<div class="col-lg-6">
 					<div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="{%static 'img/index-07.jpg'%}" alt="image" class="img-responsive">
+							<img src="{%static 'img/alch.jpg'%}" alt="image" class="img-responsive">
 						</div>						
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+							<p class="tm-home-box-3-description">“And, when you want something, all the universe conspires in helping you to achieve it.” - Paulo Coelho</p>
 					        <div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
 							<a href="#" class="tm-home-box-2-link"><span class="tm-home-box-2-description box-3">Buy</span></a>
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
+							<a href="#" class="tm-home-box-2-link"><i class="fa fa-shopping-cart tm-home-box-2-icon border-left"></i></a>
 						</div>
 						</div>						
 					</div>					
@@ -116,14 +123,14 @@ http://www.templatemo.com/tm-475-holiday
 			     <div class="col-lg-6">
 			        <div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="{%static 'img/index-08.jpg'%}" alt="image" class="img-responsive">
+							<img src="{%static 'img/harry.jpg'%}" alt="image" class="img-responsive">
 						</div>						
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+							<p class="tm-home-box-3-description">“It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.” - J.K. Rowling,</p>
 					        <div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
 							<a href="#" class="tm-home-box-2-link"><span class="tm-home-box-2-description box-3">Buy</span></a>
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
+							<a href="#" class="tm-home-box-2-link"><i class="fa fa-shopping-cart tm-home-box-2-icon border-left"></i></a>
 						</div>
 						</div>						
 					</div>
@@ -131,14 +138,14 @@ http://www.templatemo.com/tm-475-holiday
 				<div class="col-lg-6">
 				    <div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="{%static 'img/index-09.jpg'%}" alt="image" class="img-responsive">
+							<img src="{%static 'img/indulekha.jpg'%}" alt="image" class="img-responsive">
 						</div>						
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+							<p class="tm-home-box-3-description">It is widely held to be the first Malayalam novel. It is a depiction of Nair society in the late nineteenth century with a love story at its core.</p>
 					        <div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
 							<a href="#" class="tm-home-box-2-link"><span class="tm-home-box-2-description box-3">Buy</span></a>
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
+							<a href="#" class="tm-home-box-2-link"><i class="fa fa-shopping-cart tm-home-box-2-icon border-left"></i></a>
 						</div>
 						</div>						
 					</div>
@@ -146,14 +153,14 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="col-lg-6">
 			        <div class="tm-home-box-3">
 						<div class="tm-home-box-3-img-container">
-							<img src="{%static 'img/index-10.jpg'%}" alt="image" class="img-responsive">
+							<img src="{%static 'img/goat.jpg'%}" alt="image" class="img-responsive">
 						</div>						
 						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">Proin gravida nibhvell velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+							<p class="tm-home-box-3-description">“The stories of life we hear but which we don't experience are just tall stories for us” - Benyamin</p>
 					        <div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
 							<a href="#" class="tm-home-box-2-link"><span class="tm-home-box-2-description box-3">Buy</span></a>
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
+							<a href="#" class="tm-home-box-2-link"><i class="fa fa-shopping-cart tm-home-box-2-icon border-left"></i></a>
 						</div>
 						</div>						
 					</div>
